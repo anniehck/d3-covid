@@ -1,25 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import BlurOnIcon from '@material-ui/icons/BlurOn';
 import './App.css';
 
+import Main from './components/Main';
+import CountryContainer from './components/CountryContainer';
+import CountriesContainer from './components/CountriesContainer';
+
 function App() {
+    const iconStyle = {
+        fontSize: 100,
+        animation: 'App-logo-spin infinite 20s linear',
+        marginBottom: 50
+    };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+          <header className="App-header">
+            <BlurOnIcon color="secondary" style={iconStyle} />
+            <BrowserRouter>
+                <Main />
+                <Switch>
+                    <Route exact path="/search-country" component={CountryContainer} />
+                    <Route exact path="/countries" component={CountriesContainer} />
+                </Switch>
+            </BrowserRouter>
+          </header>
+      </div>
   );
 }
 
