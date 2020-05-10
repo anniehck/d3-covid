@@ -11,6 +11,9 @@ export default function Main() {
               <Button color="primary" component={RouterLink} to="/countries">
                   All Country Data
               </Button>
+              <Button color="primary" component={RouterLink} to="/united-states">
+                  US Data
+              </Button>
           </div>
       );
 }

@@ -6,6 +6,7 @@ import './App.css';
 import Main from './components/Main';
 import CountryContainer from './components/CountryContainer';
 import CountriesContainer from './components/CountriesContainer';
+import USContainer from './components/USContainer';
 
 function App() {
     const iconStyle = {
@@ -23,6 +24,7 @@ function App() {
                 <Switch>
                     <Route exact path="/search-country" component={CountryContainer} />
                     <Route exact path="/countries" component={CountriesContainer} />
+                    <Route exact path="/united-states" component={USContainer} />
                 </Switch>
             </BrowserRouter>
           </header>

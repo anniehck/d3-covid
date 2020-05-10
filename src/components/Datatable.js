@@ -15,8 +15,7 @@ import DatatableHeader from './table/DatatableHeader';
 const useStyles = makeStyles(() => ({
     root: {
         width: '90%',
-        margin: '0 auto',
-        paddingTop: '2em'
+        margin: '0 auto'
     },
     table: { minWidth: 750 },
     visuallyHidden: {
@@ -65,47 +64,44 @@ export default function Datatable(props) {
 
     return (
         <div className={classes.root}>
-        <Toolbar>
-            <Typography variant="h5" component="div">{title}</Typography>
-        </Toolbar>
-        <TableContainer>
-            <Table className={classes.table}>
-                <DatatableHeader
-                    classes={classes}
-                    headerNames={headerNames}
-                    order={order}
-                    orderBy={orderBy}
-                    onRequestSort={handleRequestSort} />
-                <TableBody>
-                    {stableSort(data, getComparator(order, orderBy))
-                        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                        .map((row, index) => {
-                            return (
-                                <TableRow key={row.Slug || 'row-' + index}>
-                                    {headerNames.map((header, i) => {
-                                        const label = row[header];
-                                        return i === 0 ? <TableCell component="th" key={'cell-i-' + index} id={index} scope="row" align="right" padding="none">{label}</TableCell>
-                                                       : <TableCell align="right" key={header + '-' + index}>{label}</TableCell>
-                                    })}
-                                </TableRow>
-                            );
-                        })}
-                    {emptyRows > 0 && (
-                        <TableRow style={{ height: 33 * emptyRows }}>
-                            <TableCell colSpan={6} />
-                        </TableRow>
-                    )}
-                </TableBody>
-            </Table>
-        </TableContainer>
-        <TablePagination
-            rowsPerPageOptions={[5, 10, 25, 50]}
-            component="div"
-            count={data.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onChangePage={handleChangePage}
-            onChangeRowsPerPage={handleChangeRowsPerPage} />
+            <TableContainer>
+                <Table className={classes.table}>
+                    <DatatableHeader
+                        classes={classes}
+                        headerNames={headerNames}
+                        order={order}
+                        orderBy={orderBy}
+                        onRequestSort={handleRequestSort} />
+                    <TableBody>
+                        {stableSort(data, getComparator(order, orderBy))
+                            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                            .map((row, index) => {
+                                return (
+                                    <TableRow key={row.Slug || 'row-' + index}>
+                                        {headerNames.map((header, i) => {
+                                            const label = row[header];
+                                            return i === 0 ? <TableCell component="th" key={'cell-i-' + index} id={index} scope="row" align="right" padding="none">{label}</TableCell>
+                                                           : <TableCell align="right" key={header + '-' + index}>{label}</TableCell>
+                                        })}
+                                    </TableRow>
+                                );
+                            })}
+                        {emptyRows > 0 && (
+                            <TableRow style={{ height: 33 * emptyRows }}>
+                                <TableCell colSpan={6} />
+                            </TableRow>
+                        )}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+            <TablePagination
+                rowsPerPageOptions={[5, 10, 25, 50]}
+                component="div"
+                count={data.length}
+                rowsPerPage={rowsPerPage}
+                page={page}
+                onChangePage={handleChangePage}
+                onChangeRowsPerPage={handleChangeRowsPerPage} />
         </div>
     );
 }
