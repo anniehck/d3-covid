@@ -8,7 +8,7 @@ import startCase from 'lodash/startCase';
 export default function DatatableHeader(props) {
     const { classes, headerNames, order, orderBy, onRequestSort } = props,
         headers = headerNames.map((h) => {
-            const numeric = /(confirmed|deaths|recovered|active|date)/i.test(h);
+            const numeric = /(confirmed|deaths|recovered|active|date|rate)/i.test(h);
             return {
                 id: h,
                 numeric,

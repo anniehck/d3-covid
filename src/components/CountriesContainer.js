@@ -6,38 +6,13 @@ import AppBar from '@material-ui/core/AppBar';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-
 
 import TopoMap from './TopoMap';
 import Datatable from './Datatable';
 import ChartContainer from './ChartContainer';
+import { TabPanel, getTabProps } from './TabPanel';
 
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-  debugger
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}>
-      {value === index && (
-        <Box p={10}>{children}</Box>
-      )}
-    </div>
-  );
-}
-
-function getTabProps(index) {
-    return {
-        id: `simple-tab-${index}`,
-        'aria-controls': `simple-tabpanel-${index}`
-    };
-}
 
 export default function CountriesContainer() {
     const dateUtils = new DateFnsUtils(),
@@ -69,7 +44,7 @@ export default function CountriesContainer() {
                     <Tabs
                         value={activeTab}
                         onChange={handleTabChange}
-                        aria-label="simple tabs example"
+                        aria-label="data tabs"
                         indicatorColor="primary"
                         textColor="primary"
                         centered>

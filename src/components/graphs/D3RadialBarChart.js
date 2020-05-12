@@ -1,6 +1,4 @@
 import * as d3 from 'd3';
-import pull from 'lodash/pull';
-import inRange from 'lodash/inRange';
 
 export default class D3RadialBarChart {
     containerEl;
@@ -98,7 +96,7 @@ export default class D3RadialBarChart {
                          .attr('dy', '0.35em')
                          .text(d => d));
 
-        this.svg = d3.select(this.containerEl)
+        this.svg = d3.select(containerEl)
                      .append('svg')
                      .attr('viewBox', `${-width / 2} ${-height / 2} ${width} ${height}`)
                      .style('width', '100%')

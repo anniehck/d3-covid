@@ -6,8 +6,6 @@ import Table from '@material-ui/core/Table';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableBody from '@material-ui/core/TableBody';
 import TablePagination from '@material-ui/core/TablePagination';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 
 import { getRowsPerPage, stableSort, getComparator } from './utils/TableUtils';
 import DatatableHeader from './table/DatatableHeader';
@@ -32,7 +30,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function Datatable(props) {
-    const { title, headerNames, data, orderByHeader } = props,
+    const { headerNames, data, orderByHeader } = props,
         classes = useStyles(),
         [order, setOrder] = useState('desc'),
         [orderBy, setOrderBy] = useState(orderByHeader),
